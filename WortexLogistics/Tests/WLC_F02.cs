@@ -10,7 +10,7 @@ using Xunit;
 
 namespace WortexLogistics.Tests
 {
-    public class WLC_F01
+    public class WLC_F02
     {
         [Fact]
         public void InvalidLoginMessageTest()
@@ -19,6 +19,7 @@ namespace WortexLogistics.Tests
             using var ctx = new TestContext();
             var authContext = ctx.Services.AddTestAuthorization();
             authContext.SetAuthorized("TEST USER");
+            authContext.SetRoles("manager");
 
             //// Act
             //var cut = ctx.RenderComponent<LoginModel>();
