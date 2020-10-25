@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Bunit;
@@ -7,13 +8,15 @@ using Bunit.TestDoubles.Authorization;
 using WortexLogistics.Areas.Identity.Pages.Account;
 using WortexLogistics.Shared;
 using Xunit;
+using Xunit.Abstractions;
+using Index = WortexLogistics.Pages.Index;
 
 namespace WortexLogistics.Tests
 {
     public class WLC_F02
     {
         [Fact]
-        public void InvalidLoginMessageTest()
+        public void AuthorizedUserSeeRole()
         {
             // Arrange
             using var ctx = new TestContext();
@@ -22,11 +25,10 @@ namespace WortexLogistics.Tests
             authContext.SetRoles("manager");
 
             //// Act
-            //var cut = ctx.RenderComponent<LoginModel>();
+            var cut = ctx.RenderComponent<Index>();
 
             //// Assert
-            //cut.MarkupMatches(@"<h1>Welcome TEST USER</h1>
-            //        <p>State: Authorized</p>");
+            Assert.True(cut.Markup.Contains("Role: manager"));
         }
     }
 }
