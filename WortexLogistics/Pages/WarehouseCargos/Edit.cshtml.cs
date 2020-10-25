@@ -12,9 +12,9 @@ namespace WortexLogistics.Pages.WarehouseCargos
 {
     public class EditModel : PageModel
     {
-        private readonly WortexLogistics.Models.wortexlogisticsContext _context;
+        private readonly WortexLogistics.Data.wortexlogisticsContext _context;
 
-        public EditModel(WortexLogistics.Models.wortexlogisticsContext context)
+        public EditModel(WortexLogistics.Data.wortexlogisticsContext context)
         {
             _context = context;
         }

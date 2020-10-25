@@ -11,9 +11,9 @@ namespace WortexLogistics.Pages.TruckCargos
 {
     public class IndexModel : PageModel
     {
-        private readonly WortexLogistics.Models.wortexlogisticsContext _context;
+        private readonly WortexLogistics.Data.wortexlogisticsContext _context;
 
-        public IndexModel(WortexLogistics.Models.wortexlogisticsContext context)
+        public IndexModel(WortexLogistics.Data.wortexlogisticsContext context)
         {
             _context = context;
         }

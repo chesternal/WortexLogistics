@@ -11,9 +11,9 @@ namespace WortexLogistics.Pages.WarehouseCargos
 {
     public class DeleteModel : PageModel
     {
-        private readonly WortexLogistics.Models.wortexlogisticsContext _context;
+        private readonly WortexLogistics.Data.wortexlogisticsContext _context;
 
-        public DeleteModel(WortexLogistics.Models.wortexlogisticsContext context)
+        public DeleteModel(WortexLogistics.Data.wortexlogisticsContext context)
         {
             _context = context;
         }
