@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Testinqa.Models
+namespace WortexLogistics.Models
 {
-    public partial class WarehouseCargo
+    public partial class TruckCargo
     {
         [Key]
         [Column(TypeName = "int")]
@@ -14,34 +14,34 @@ namespace Testinqa.Models
 
         [Column(TypeName = "varchar(30)")]
         [Display(Name = "Cargo Name")]
-        public string WCargoName { get; set; }
+        public string TCargoName { get; set; }
 
         [Column(TypeName = "smallint")]
         [Display(Name = "Cargo Count")]
-        public string WCargoCount { get; set; }
+        public string TCargoCount { get; set; }
 
         [Column(TypeName = "decimal(4,2)")]
         [Display(Name = "Cargo Weight")]
-        public string WCargoWeight { get; set; }
+        public string TCargoWeight { get; set; }
 
         [Column(TypeName = "varchar(30)")]
         [Display(Name = "Cargo Name")]
-        public string WCargoOrigin { get; set; }
+        public string TCargoOrigin { get; set; }
 
         [Column(TypeName = "varchar(30)")]
         [Display(Name = "Cargo Name")]
-        public string WCargoDestination { get; set; }
+        public string TCargoDestination { get; set; }
 
 
-        public WarehouseCargo GetWarehouseCargo()
+        public TruckCargo GetTruckCargo()
         {
-            return new WarehouseCargo
+            return new TruckCargo
             {
-                WCargoName = WCargoName,
-                WCargoCount = WCargoCount,
-                WCargoWeight = WCargoWeight,
-                WCargoOrigin = WCargoOrigin,
-                WCargoDestination = WCargoDestination
+                TCargoName = TCargoName,
+                TCargoCount = TCargoCount,
+                TCargoWeight = TCargoWeight,
+                TCargoOrigin = TCargoOrigin,
+                TCargoDestination = TCargoDestination
             };
         }
     }
