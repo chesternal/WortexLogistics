@@ -15,7 +15,7 @@ namespace WortexLogistics.Controllers
     public class TruckCargoesController : ControllerBase
     {
         private readonly wortexlogisticsContext _context;
-
+        
         public TruckCargoesController(wortexlogisticsContext context)
         {
             _context = context;
