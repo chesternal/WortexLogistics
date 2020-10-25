@@ -1,8 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using WortexLogistics.Models;
 
-namespace WortexLogistics.Models
+namespace WortexLogistics.Data
 {
     public partial class wortexlogisticsContext : DbContext
     {
