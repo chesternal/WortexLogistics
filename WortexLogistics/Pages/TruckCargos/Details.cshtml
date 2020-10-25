@@ -1,0 +1,49 @@
+﻿@page
+@model WortexLogistics.Pages.TruckCargos.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>TruckCargo</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TruckCargo.TcargoName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TruckCargo.TcargoName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TruckCargo.TcargoCount)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TruckCargo.TcargoCount)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TruckCargo.TcargoWeight)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TruckCargo.TcargoWeight)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TruckCargo.TcargoOrigin)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TruckCargo.TcargoOrigin)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TruckCargo.TcargoDestination)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TruckCargo.TcargoDestination)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.TruckCargo.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

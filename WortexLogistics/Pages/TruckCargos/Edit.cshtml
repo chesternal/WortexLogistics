@@ -1,0 +1,55 @@
+﻿@page
+@model WortexLogistics.Pages.TruckCargos.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>TruckCargo</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="TruckCargo.Id" />
+            <div class="form-group">
+                <label asp-for="TruckCargo.TcargoName" class="control-label"></label>
+                <input asp-for="TruckCargo.TcargoName" class="form-control" />
+                <span asp-validation-for="TruckCargo.TcargoName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TruckCargo.TcargoCount" class="control-label"></label>
+                <input asp-for="TruckCargo.TcargoCount" class="form-control" />
+                <span asp-validation-for="TruckCargo.TcargoCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TruckCargo.TcargoWeight" class="control-label"></label>
+                <input asp-for="TruckCargo.TcargoWeight" class="form-control" />
+                <span asp-validation-for="TruckCargo.TcargoWeight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TruckCargo.TcargoOrigin" class="control-label"></label>
+                <input asp-for="TruckCargo.TcargoOrigin" class="form-control" />
+                <span asp-validation-for="TruckCargo.TcargoOrigin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TruckCargo.TcargoDestination" class="control-label"></label>
+                <input asp-for="TruckCargo.TcargoDestination" class="form-control" />
+                <span asp-validation-for="TruckCargo.TcargoDestination" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,52 @@
+﻿@page
+@model WortexLogistics.Pages.TruckCargos.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>TruckCargo</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TruckCargo.TcargoName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TruckCargo.TcargoName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TruckCargo.TcargoCount)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TruckCargo.TcargoCount)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TruckCargo.TcargoWeight)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TruckCargo.TcargoWeight)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TruckCargo.TcargoOrigin)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TruckCargo.TcargoOrigin)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TruckCargo.TcargoDestination)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TruckCargo.TcargoDestination)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="TruckCargo.Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

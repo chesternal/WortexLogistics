@@ -1,0 +1,54 @@
+﻿@page
+@model WortexLogistics.Pages.WarehouseCargos.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>WarehouseCargo</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="WarehouseCargo.WcargoName" class="control-label"></label>
+                <input asp-for="WarehouseCargo.WcargoName" class="form-control" />
+                <span asp-validation-for="WarehouseCargo.WcargoName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WarehouseCargo.WcargoCount" class="control-label"></label>
+                <input asp-for="WarehouseCargo.WcargoCount" class="form-control" />
+                <span asp-validation-for="WarehouseCargo.WcargoCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WarehouseCargo.WcargoWeight" class="control-label"></label>
+                <input asp-for="WarehouseCargo.WcargoWeight" class="form-control" />
+                <span asp-validation-for="WarehouseCargo.WcargoWeight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WarehouseCargo.WcargoOrigin" class="control-label"></label>
+                <input asp-for="WarehouseCargo.WcargoOrigin" class="form-control" />
+                <span asp-validation-for="WarehouseCargo.WcargoOrigin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WarehouseCargo.WcargoDestination" class="control-label"></label>
+                <input asp-for="WarehouseCargo.WcargoDestination" class="form-control" />
+                <span asp-validation-for="WarehouseCargo.WcargoDestination" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
