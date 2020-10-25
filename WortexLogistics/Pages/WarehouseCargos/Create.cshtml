@@ -11,6 +11,11 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
+              @Model.ErrorName
+              @Model.ErrorCount
+              @Model.ErrorWeight
+              @Model.ErrorOrigin
+              @Model.ErrorDestination
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">

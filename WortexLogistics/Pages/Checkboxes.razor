@@ -1,0 +1,42 @@
+﻿@page "/checkboxes"
+
+@foreach (var package in PackageList())
+{
+    <input type="checkbox" @onchange="eventArgs => { CheckboxClicked(package, eventArgs.Value); }" />
+    @package
+    <br />
+}
+
+@functions {
+
+    public List<string> Packages { get; set; } = new List<string>();
+    void CheckboxClicked(string ID, object checkedValue)
+    {
+        if ((bool)checkedValue)
+        {
+            if (!Packages.Contains(ID))
+            {
+                Packages.Add(ID);
+            }
+        }
+        else
+        {
+            if (Packages.Contains(ID))
+            {
+                Packages.Remove(ID);
+            }
+        }
+    }
+
+    public List<String> PackageList()
+    {
+        List<String> c = new List<String>();
+        c.Add("Package1");
+        c.Add("Package2");
+        c.Add("Package3");
+        c.Add("Package4");
+        c.Add("Package5");
+        return c;
+    }
+
+}

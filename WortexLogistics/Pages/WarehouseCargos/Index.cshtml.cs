@@ -19,10 +19,33 @@ namespace WortexLogistics.Pages.WarehouseCargos
         }
 
         public IList<WarehouseCargo> WarehouseCargo { get;set; }
+        public int TotalCargo { get;set; }
+        public string CargoText { get; set; }
+        public string Errors { get; set; }
 
         public async Task OnGetAsync()
         {
+            TotalCargo = 0;
             WarehouseCargo = await _context.WarehouseCargo.ToListAsync();
+            foreach (var cargo in WarehouseCargo)
+            {
+                if (cargo == null)
+                {
+                    Errors = "ERROR: No cargo!";
+                }
+                else
+                {
+                    TotalCargo = TotalCargo + cargo.WcargoCount;
+                }
+            }
+            if (TotalCargo == 0)
+            {
+                CargoText = "No cargo in the warehouse!";
+            }
+            else
+            {
+                CargoText = TotalCargo.ToString() + " cargo in the warehouse!";
+            }
         }
     }
 }

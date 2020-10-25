@@ -1,16 +1,27 @@
 ﻿@page
 @model WortexLogistics.Pages.TruckCargos.IndexModel
-
+@using System.Threading;
 @{
     ViewData["Title"] = "Index";
+
 }
 
 <h1>Index</h1>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
+@if (Model.TotalWeight <= 500 && Model.TotalWeight > 0 && Model.CurrentLocation == "Home")
+{
+    <p>
+        <a asp-page="Create">Create New</a>
+    </p>
+}
+@if ((Model.CurrentLocation != Model.NextDestination) && (@Model.TotalWeight>=0 && @Model.TotalWeight<500))
+{
+    <p>
+        <button type="button" onclick=StartCountdown()>@Model.Button</button>
+    </p>
+}
 <table class="table">
+        Location : @Model.CurrentLocation , Destination: @Model.NextDestination, Currently: @Model.Moving
     <thead>
         <tr>
             <th>
@@ -32,29 +43,45 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.TruckCargo) {
+        @foreach (var item in Model.TruckCargo)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TcargoName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TcargoCount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TcargoWeight)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TcargoOrigin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TcargoDestination)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.TcargoName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TcargoCount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TcargoWeight)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TcargoOrigin)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TcargoDestination)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                Total Weight: @Model.TotalWeight
             </td>
         </tr>
-}
+        <tr>
+            <td>
+                @Model.ErrorHandling
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Model.WeightHandling
+            </td>
+        </tr>
     </tbody>
 </table>
