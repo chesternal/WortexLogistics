@@ -1,7 +1,8 @@
 ﻿<CascadingAuthenticationState>
     <AuthorizeView>
         <Authorized>
-            <a href="Identity/Account/Manage">Hello, @context.User.Identity.Name!</a>
+            <a id="greeting" href="Identity/Account/Manage">Hello, @context.User.Identity.Name!</a>
+            <div id="role">Role: @context.User.FindFirstValue(ClaimTypes.Role)</div>
             <form method="post" action="Identity/Account/LogOut">
                 <button type="submit" class="nav-link btn btn-link">Log out</button>
             </form>
@@ -12,3 +13,14 @@
         </NotAuthorized>
     </AuthorizeView>
 </CascadingAuthenticationState>
+
+@using Microsoft.AspNetCore.Identity;
+@using System.Security.Claims
+@inject UserManager<IdentityUser> userManager;
+
+@code {
+    protected async Task<string> Role(ClaimsPrincipal user)
+    {
+        return (await userManager.GetRolesAsync(await userManager.GetUserAsync(user))).FirstOrDefault();
+    }
+}

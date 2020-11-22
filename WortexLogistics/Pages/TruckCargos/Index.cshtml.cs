@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -37,7 +38,7 @@ namespace WortexLogistics.Pages.TruckCargos
             TruckCargo = await _context.TruckCargo.ToListAsync();
             foreach(var cargo in TruckCargo)
             {
-                if (cargo == null)
+                if (cargo.TcargoCount == 0)
                 {
                     WeightHandling = "ERROR: No cargo!";
                 }
@@ -51,7 +52,8 @@ namespace WortexLogistics.Pages.TruckCargos
                     TotalWeight = (decimal)(TotalWeight + (cargo.TcargoWeight*cargo.TcargoCount));
                 }
             }
-            NextDestination = TruckCargo[0].TcargoDestination;
+
+            NextDestination = TruckCargo.Any() ? TruckCargo[0].TcargoDestination : "Home";
             Button = "Dispatch!";
             if (TotalWeight > 500)
             {
@@ -63,6 +65,11 @@ namespace WortexLogistics.Pages.TruckCargos
             {
                 ErrorHandling = "ERROR: Truck has negative load";
                 CurrentLocation = "Home";
+                Moving = "Stopped";
+            }
+            else if(!TruckCargo.Any()){
+                CurrentLocation = "Home";
+                Button = "Dispatch!";
                 Moving = "Stopped";
             }
             else

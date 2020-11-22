@@ -8,10 +8,10 @@
 
 <h1>Index</h1>
 
-@if (Model.TotalWeight <= 500 && Model.TotalWeight > 0 && Model.CurrentLocation == "Home")
+@if (Model.TotalWeight <= 500 && Model.TotalWeight >= 0 && Model.CurrentLocation == "Home")
 {
     <p>
-        <a asp-page="Create">Create New</a>
+        <a id="create" asp-page="Create">Create New</a>
     </p>
 }
 @if ((Model.CurrentLocation != Model.NextDestination) && (@Model.TotalWeight>=0 && @Model.TotalWeight<500))
@@ -45,7 +45,7 @@
     <tbody>
         @foreach (var item in Model.TruckCargo)
         {
-            <tr>
+            <tr id="item">
                 <td>
                     @Html.DisplayFor(modelItem => item.TcargoName)
                 </td>
@@ -62,14 +62,14 @@
                     @Html.DisplayFor(modelItem => item.TcargoDestination)
                 </td>
                 <td>
-                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                    <a id="edit" asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a id="details" asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a id="delete" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>
         }
         <tr>
-            <td>
+            <td id="total">
                 Total Weight: @Model.TotalWeight
             </td>
         </tr>
